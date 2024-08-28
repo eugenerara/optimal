@@ -1,6 +1,6 @@
 package com.eugenerara.optimal.encryption.controller;
 
-import com.eugenerara.optimal.encryption.model.FileEncryptionDto;
+import com.eugenerara.optimal.encryption.model.FilePathRecord;
 import com.eugenerara.optimal.encryption.service.EncryptionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -33,8 +33,8 @@ public class EncryptionController {
             @ApiResponse(responseCode = "500", description = "Encryption for file failed")
     })
     @PostMapping("/encrypt")
-    public String encrypt(@Valid @RequestBody FileEncryptionDto fileEncryptionDto) throws NoSuchPaddingException, NoSuchAlgorithmException, IOException, InvalidKeyException {
-        encryptionService.encrypt(fileEncryptionDto.getInputFilePath(), fileEncryptionDto.getOutputFilePath());
+    public String encrypt(@Valid @RequestBody FilePathRecord filePathRecord) throws NoSuchPaddingException, NoSuchAlgorithmException, IOException, InvalidKeyException {
+        encryptionService.encrypt(filePathRecord.inputFilePath(), filePathRecord.outputFilePath());
         return "Encrypting...";
     }
 
