@@ -1,3 +1,0 @@
-encryption:
-  aes:
-    secret: "my-secret-key"
